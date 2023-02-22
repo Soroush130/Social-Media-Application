@@ -1,6 +1,6 @@
 ## Django Social Network
 
-A website template is similar to instagram . It employs the use of Html, CSS, Bootstrap, and Javascript to build it.
+A social media web-application with Django.
 
 # Features :
 - Sign Up, Login,Logout
@@ -13,12 +13,12 @@ A website template is similar to instagram . It employs the use of Html, CSS, Bo
 
 # Installation :
 ```
-	$ python -m venv venv
-    $ source venv/Scripts/activate
-	(venv) pip install -r requirements.txt
-    (venv) cd SocialNetwork
-    (venv) python manage.py makemigrations
-    (venv) python manage.py migrate
-    (venv) python manage.py createsuperuser
-    (venv) python manage.py runserver
+$ python -m venv venv
+$ source venv/Scripts/activate
+(venv) pip install -r requirements.txt
+(venv) cd SocialNetwork
+(venv) python manage.py makemigrations
+(venv) python manage.py migrate
+(venv) python manage.py createsuperuser
+(venv) python manage.py runserver
 ```
