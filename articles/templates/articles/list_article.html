@@ -1,0 +1,68 @@
+{% extends 'shared/_MainLayout.html' %}
+{% load static %}
+
+{% block header_ref %}
+    <link rel="stylesheet" href="{% static "css/article_list.css" %}">
+{% endblock %}
+
+{% block title %}
+    Articles
+{% endblock %}
+
+{% block content %}
+    <!-- start List Article -->
+
+    <div class="container mt-4 article-list" style="margin-left: 199px;">
+        {% for article in articles %}
+            <div class="row mb-5">
+                <div class="col-md-1"></div>
+                <div class="col-md-9">
+                    <div class="article">
+                        <div class="article-header ms-3">
+                            <div>
+                                <div class="img-author">
+                                    <img src="{% static "images/profile.jpg" %}" alt="">
+                                </div>
+                                <div class="username-author ms-2">
+                                    <h5>{{ article.user.username }}</h5>
+                                </div>
+                            </div>
+                            <div class="me-3">
+                                <h6>3 day ago</h6>
+                            </div>
+                        </div>
+
+                        <div class="article-content">
+                            <div class="title-article ms-3">
+                                <h2>{{ article.title }}</h2>
+                            </div>
+                            <div class="img-article">
+                                <img src="{{ article.cover.url }}" alt="">
+                            </div>
+                            <div class="desc-article ms-4 mt-3">
+                                <h6>{{ article.description|truncatewords:25 }}</h6>
+                            </div>
+                        </div>
+
+                        <div class="article-footer">
+                            <div class="btns">
+                                <div class="b1 ms-4">
+                                    <i class="fa fa-bookmark-o"></i>
+                                    <i class="fa fa-heart-o"></i>
+                                </div>
+                                <div class="b2 me-4">
+                                    <a href="{% url "articles:detail_article" article.id %}"
+                                       class="btn btn-dark">Visit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- end List Article -->
+{% endblock %}

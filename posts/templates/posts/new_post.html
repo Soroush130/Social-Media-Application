@@ -1,0 +1,72 @@
+{% extends 'shared/_MainLayout.html' %}
+{% load static %}
+
+{% block header_ref %}
+    <link rel="stylesheet" href="{% static "css/new_post.css" %}">
+{% endblock %}
+
+{% block title %}New Post{% endblock %}
+
+{% block content %}
+    <!-- start section main -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 box-post">
+                <form action="" method="POST" enctype="multipart/form-data"
+                      style="display: flex;justify-content: center;align-items: baseline; flex-direction: column;">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="input-desc" class="form-label">Description : </label>
+                                <textarea name="description" class="form-control" id="input-desc" cols="200"
+                                          rows="7" style="background-color: #b8b8b8"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="images" class="drop-container">
+                                    <span class="drop-title">Drop files here</span>
+                                    or
+                                    <input type="file" name="img" id="images">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-md">
+                            {#                            <div class="tags">#}
+                            {#                                <div class="tag" data-title="Programming" onclick="TagSelect(this)">Programming</div>#}
+                            {#                                <div class="tag" data-title="Html" onclick="TagSelect(this)">Html</div>#}
+                            {#                                <div class="tag" data-title="Css" onclick="TagSelect(this)">Css</div>#}
+                            {#                                <div class="tag" data-title="Python" onclick="TagSelect(this)">Python</div>#}
+                            {#                                <div class="tag" data-title="Django" onclick="TagSelect(this)">Django</div>#}
+                            {#                            </div>#}
+                            <select class="tags" name="tags" id="">
+                                {% for tag in tags %}
+                                    <option class="tag" value="{{ tag.id }}"
+                                            onclick="TagSelect(this)">{{ tag.title }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto mt-2">
+                        <button type="submit" class="btn btn-dark float-end">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+    <!-- end section main -->
+{% endblock %}
+
+
+{% block footer_ref %}
+    <script>
+        function TagSelect(e) {
+            e.classList.toggle('tag-select');
+        }
+    </script>
+{% endblock %}

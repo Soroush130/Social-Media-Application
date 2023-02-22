@@ -1,0 +1,67 @@
+{% extends 'shared/_MainLayout.html' %}
+{% load static %}
+
+{% block header_ref %}
+    <link rel="stylesheet" href="{% static "css/new_article.css" %}">
+{% endblock %}
+
+{% block title %}New Article{% endblock %}
+{% block content %}
+    <!-- main -->
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"
+                 style="border-radius: 20px;box-shadow: 15px 15px 10px #c4c4c4, -11px -11px 10px #f2f2f2;">
+                <form action="" method="POST" enctype="multipart/form-data" style="padding: 10px;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="input-title" class="form-label">Title :</label>
+                        <input type="text" name="title" id="input-title" class="form-control"
+                               style="width: 315px;background-color: #b8b8b8">
+                    </div>
+                    <div class="mb-3">
+                        <label for="input-description" class="form-label">Description :</label>
+                        <textarea name="description" id="input-description" class="form-control" cols="30" rows="5"
+                                  style="background-color: #b8b8b8"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="input-description" class="form-label">Cover :</label>
+                        <label for="images" class="drop-container">
+                            <span class="drop-title">Drop files here</span>
+                            or
+                            <input type="file" name="cover" id="images">
+                        </label>
+                    </div>
+{#                    <div class="mb-3">#}
+{#                        <label for="input-tag" class="form-label">#}
+{#                            Tag :#}
+{#                        </label>#}
+{#                        <div class="tags">#}
+{#                            <div class="tag" data-title="Programming" onclick="TagSelect(this)">Programming</div>#}
+{#                            <div class="tag" data-title="Html" onclick="TagSelect(this)">Html</div>#}
+{#                            <div class="tag" data-title="Css" onclick="TagSelect(this)">Css</div>#}
+{#                            <div class="tag" data-title="Python" onclick="TagSelect(this)">Python</div>#}
+{#                            <div class="tag" data-title="Django" onclick="TagSelect(this)">Django</div>#}
+{#                            <div class="tag" data-title="Django" onclick="TagSelect(this)">Django</div>#}
+{#                        </div>#}
+{#                    </div>#}
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-dark my-2" type="submit">Subimt</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <!-- end main -->
+{% endblock %}
+
+
+{% block footer_ref %}
+    <script>
+        function TagSelect(e) {
+            e.classList.toggle('tag-select');
+        }
+    </script>
+{% endblock %}

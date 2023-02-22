@@ -1,0 +1,52 @@
+{% extends 'shared/_MainLayout.html' %}
+{% load static %}
+
+{% block header_ref %}
+    <link rel="stylesheet" href="{% static "css/explor.css" %}">
+    <style>
+        .post:hover {
+            cursor: pointer;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+    Explor
+{% endblock %}
+
+{% block content %}
+    <!-- start explor -->
+
+    <div class="container mt-4 box" style="border: none">
+        {% for post in posts %}
+            <div class="row r">
+                {% for p in post %}
+                    <div class="col-md-4 my-2 post" id="{{ p.id }}" onclick="DetailPost(this.id)"
+                         style="text-align: center">
+                        <img src="{{ p.img.url }}" alt="" style="width: 420px;height: 344px">
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- end explor -->
+
+    <!-- section button back start document -->
+
+    <div class="button">
+        <i class="fa fa-arrow-up" style="font-size: 50px; color:rgb(255, 255, 255)"></i>
+    </div>
+
+    <!-- end section -->
+
+{% endblock %}
+
+{% block footer_ref %}
+    <script>
+        function DetailPost(e) {
+            window.location.href = 'http://127.0.0.1:8000/posts/detail_post/'+ e + '/'
+        }
+    </script>
+    <script src="{% static "js/explor.js" %}"></script>
+{% endblock %}

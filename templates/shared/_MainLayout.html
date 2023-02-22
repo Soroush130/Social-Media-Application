@@ -1,0 +1,29 @@
+{% load static %}
+{% load render_partial %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+		<meta charset="utf-8">
+		<title>{% block title %}{% endblock title %}</title>
+		<meta name="description" content="#">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		
+        {% include 'shared/_HeaderReferences.html' %}
+		{% block header_ref %}{% endblock header_ref %}
+	</head>
+	<body>
+        {% render_partial 'header' %}
+
+        {% block content %}
+
+        {% endblock content %}
+
+        {% render_partial 'footer' %}
+
+        {% include 'shared/_FooterReferences.html' %}
+        {% block footer_ref %}{% endblock footer_ref %}
+	</body>
+</html>
